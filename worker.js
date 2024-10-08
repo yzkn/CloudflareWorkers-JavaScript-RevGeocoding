@@ -49,7 +49,7 @@ export default {
         const response = await fetch(url);
         const { contentType, result } = await gatherResponse(response);
 
-        const options = { headers: { "content-type": contentType } };
+        const options = { headers: { "content-type": contentType, "Access-Control-Allow-Origin": "*" } };
         return new Response(result, options);
     },
 };
