@@ -31,17 +31,17 @@ export default {
         }
 
         const url = `https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress?lat=${lat}&lon=${lon}`;
-        const loggingUrl = 'https://***.azurewebsites.net:443/api/***/triggers/When_a_HTTP_request_is_received/invoke?api-version=2022-05-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=***';
+        // const loggingUrl = 'https://***.azurewebsites.net:443/api/***/triggers/When_a_HTTP_request_is_received/invoke?api-version=2022-05-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=***';
 
-        async function logging(result) {
-            const headers = new Headers({ "Content-Type": "application/json" });
+        // async function logging(result) {
+        //     const headers = new Headers({ "Content-Type": "application/json" });
 
-            await fetch(loggingUrl, {
-                method: 'POST',
-                body: JSON.stringify({ "Message": result }),
-                headers: headers
-            });
-        }
+        //     await fetch(loggingUrl, {
+        //         method: 'POST',
+        //         body: JSON.stringify({ "Message": result }),
+        //         headers: headers
+        //     });
+        // }
 
         // gatherResponse returns both content-type & response body as a string
         async function gatherResponse(response) {
@@ -57,7 +57,7 @@ export default {
                     result.headers = Object.fromEntries(request.headers);
                 }
 
-                await logging(result);
+                // await logging(result);
                 return { contentType, result: JSON.stringify(result) };
             }
             return { contentType, result: response.text() };
